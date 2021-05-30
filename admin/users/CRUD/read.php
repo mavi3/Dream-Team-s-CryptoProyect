@@ -2,7 +2,10 @@
 /* Este archivo debe manejar la lógica de obtener los datos de un determinado usuario */
 $id = $_GET['id'];
 
-$consulta = pg_query($dbconn,"SELECT id, usuario.nombre, apellido, correo, pais.nombre, DATE(fecha_registro) FROM usuario INNER JOIN pais ON usuario.pais = pais.cod_pais WHERE id=".$id);
+$sql = "SELECT id, usuario.nombre, apellido, correo, pais.nombre, DATE(fecha_registro) 
+        FROM usuario INNER JOIN pais ON usuario.pais = pais.cod_pais 
+        WHERE id=$1";
+$consulta = pg_query_params($dbconn,$sql,array($id));
 $fila = pg_fetch_row($consulta);
 echo "<p>ID: ". $fila[0]." </p>";
 echo "<p>Nombre: ". $fila[1]." </p>";
