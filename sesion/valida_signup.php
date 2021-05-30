@@ -13,8 +13,9 @@ $pais = isset($_POST['country']) ? $_POST['country'] : '';
 if($password == $password2){
   
     $comprobar_mail = pg_query_params($dbconn,"SELECT correo FROM usuario WHERE correo =$1",array($correo));
-    $a= pg_fetch_row($comprobar_mail);
-    if(!$comprobar_mail){
+    $fila= pg_fetch_row($comprobar_mail);
+    echo "aaaa";
+    if(!$fila){
         $opciones = array('cost'=>12);
         $password = password_hash($password,PASSWORD_BCRYPT,$opciones);
         $consulta = "INSERT 
@@ -37,10 +38,10 @@ if($password == $password2){
             echo "BAD ENDING Inténtalo nuevamente.";
         }
 
-}else{
-    header("refresh:5;url=sign-up.html");
-    echo "El Coreo ingresado Ya existe, por favor ingresa uno distinto.";
-    }
+    }else{
+        header("refresh:5;url=sign-up.html");
+        echo "El Coreo ingresado Ya existe, por favor ingresa uno distinto.";
+        }
 
 }else{
     header("refresh:5;url=sign-up.html");
