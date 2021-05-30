@@ -11,5 +11,11 @@ echo "<p>Correo: ". $fila[3]." </p>";
 echo "<p>País: ". $fila[4]." </p>";
 echo "<p>Fecha de Ingreso: ". $fila[5]." </p>";
 
+echo '<div class="d-flex justify-content-end">
+         <a href="/admin/users/all.html" class="btn btn-secondary">Volver</a>
+         <a href="/admin/users/update.html?id='. $fila[0].'" class="btn btn-warning mx-3">Editar <i class="fas fa-edit"></i></a>
+         <a href="/admin/users/CRUD/delete.php?id='. $fila[0].'" class="btn btn-danger">Borrar <i class="fas fa-trash-alt"></i></a></td>
+     </div>';
+
 pg_close($dbconn);
 ?>
