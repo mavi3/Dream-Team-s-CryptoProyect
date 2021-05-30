@@ -9,10 +9,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 if(!empty($_POST["email"]) && !empty($_POST["pwd"])){
  $email = $_POST["email"];
  $password = $_POST["pwd"];
- $result = pg_query('SELECT nombre, contraseña, correo, admin FROM usuario WHERE correo=\''.$email.'\'');
+ $result = pg_query('SELECT id, nombre, apellido, correo, contraseña FROM usuario WHERE correo=\''.$email.'\'');
  if($row = pg_fetch_array($result)){
   if($row["contraseña"] == $password){
-   $_SESSION["user"] = $row['nombre'];
+      //Llenar de datos el array $_SESSION para su uso posterior.
+   $_SESSION["user"] = $row["nombre"];
+   $_SESSION["id"] = $row['id'];
+
    echo 'Has sido logueado correctamente '.$_SESSION['user'].' <p>';
    $sesion= 1;
   }else{
