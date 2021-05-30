@@ -11,5 +11,4 @@ $row = pg_fetch_array($result);
 if($row["admin"] == 'f'){
     header("Location: ../../index.html" );
 }
-
 ?>
