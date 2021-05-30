@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 if(!empty($_POST["email"]) && !empty($_POST["pwd"])){
  $email = $_POST["email"];
  $password = $_POST["pwd"];
- $result = pg_query_params($dbconn,'SELECT id, nombre, apellido, correo, contraseña FROM usuario WHERE correo=$1',array($email));
+ $result = pg_query_params($dbconn,'SELECT id, nombre, apellido, correo, contraseña, "admin" FROM usuario WHERE correo=$1',array($email));
  if($row = pg_fetch_array($result)){
   if(password_verify($password,$row[4])){
       //Llenar de datos el array $_SESSION para su uso posterior.
