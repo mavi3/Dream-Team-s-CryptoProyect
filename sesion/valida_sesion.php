@@ -1,6 +1,14 @@
 <?php
+include $_SERVER['DOCUMENT_ROOT'].'/db_config.php';
 session_start();
+
+// Separa entre si estás conectado o no.
 if(isset($_SESSION["user"])) {
+
+    $id = $_SESSION["id"];
+    $result = pg_query($dbconn,'SELECT admin FROM usuario WHERE id='.$id);
+    $row = pg_fetch_array($result);
+
    echo '<ul class="navbar-nav">
             <!-- Visible solo si hay una sesión iniciada -->
             <li class="nav-item">
@@ -9,12 +17,17 @@ if(isset($_SESSION["user"])) {
             <!-- Solo los usuarios tienen billetera -->
             <li class="nav-item">
                 <a class="nav-link" href="/user/wallet.html">Billetera</a>
-            </li>
-            <!-- Solo el admin puede revisar los usuarios -->
+            </li>';
+
+// Si el usuario en cuestión es Administrador, entonces podrá ver la página CRUD
+    if($row["admin"] == 't'){
+        echo '<!-- Solo el admin puede revisar los usuarios -->
             <li class="nav-item">
                 <a class="nav-link" href="/admin/users/all.html">Usuarios</a>
-            </li>
-        </ul>
+            </li>';
+    }
+    
+    echo    '</ul>
         <ul class="navbar-nav ml-auto">
             <!-- Visible solo si hay una sesión iniciada -->
             <li class="nav-item">
