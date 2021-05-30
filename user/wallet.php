@@ -1,8 +1,5 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'].'/db_config.php';
-if(!isset($_SESSION['user'])){
-    header("Location: ../../index.html" );
-}
 /* Este archivo debe manejar la lógica para obtener la información de la billetera */
 $id = $_SESSION['id'];
 $sql = "SELECT moneda.sigla, moneda.nombre, usuario_tiene_moneda.balance
