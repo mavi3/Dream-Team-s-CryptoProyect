@@ -23,5 +23,5 @@ if(!$consulta){
         echo '</tr>';
     }
 }
-pg_close($dbconn)
+pg_close($dbconn);
 ?>
