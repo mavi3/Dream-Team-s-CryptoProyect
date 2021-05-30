@@ -1,5 +1,4 @@
 <?php include '../include/navbar.html'; ?>
-<?php include 'profile.php'; ?>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/db_config.php'; ?>
     <div class='container-fluid'>
         <div class="row p-3">
@@ -9,10 +8,7 @@
             <div class="col">
                 <!-- Mostrar aquí los datos del usuario de la sesión -->
                 <div class="container shadow-lg rounded m-auto p-5">
-                    <p>Nombre Completo: </p>
-                    <p>Correo: </p>
-                    <p>País: </p>
-                    <p>Fecha de Ingreso:</p>
+                    <?php include 'profile.php'; ?>
                 </div>
             </div>
         </div>
