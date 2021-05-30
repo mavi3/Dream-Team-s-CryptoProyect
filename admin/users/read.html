@@ -1,5 +1,7 @@
 <?php include '../../include/navbar.html'; ?>
-<?php include 'CRUD/read.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/db_config.php'; ?>
+
+
     <div class='container-fluid'>
         <div class="row p-3">
             <h1>Ver Usuario</h1>
@@ -8,12 +10,8 @@
             <div class="col">
                 <div class="container shadow-lg rounded m-auto p-5">
                         <!-- Aquí debe aparecer toda la información relevante del usuario -->
-                        <p>ID: </p>
-                        <p>Nombre: </p>
-                        <p>Apellido: </p>
-                        <p>Correo: </p>
-                        <p>País: </p>
-                        <p>Fecha de Ingreso: </p>
+                        <?php include 'CRUD/read.php'; ?>
+
                         <div class='d-flex justify-content-end'>
                             <a href="/admin/users/all.html" class="btn btn-secondary">Volver</a>
                             <!-- Estos links deberían tener el ID asociado -->

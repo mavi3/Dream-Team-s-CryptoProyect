@@ -7,7 +7,7 @@ if(!$consulta){
 
 }else{
     while($fila = pg_fetch_row($consulta)){
-        echo '<tr>';
+        //echo '<tr id=>'. $fila[0]. ;
         echo '<td>'. $fila[0]. '</td>';
         echo '<td>'. $fila[1]. '</td>';
         echo '<td>'. $fila[2]. '</td>';
@@ -23,4 +23,6 @@ if(!$consulta){
         echo '</tr>';
     }
 }
+
+pg_close($dbconn)
 ?>
