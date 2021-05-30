@@ -1,5 +1,8 @@
 <?php
 /* Este archivo debe manejar la lógica para obtener la información del perfil */
+if(!isset($_SESSION['user'])){
+    header("Location: ../../index.html" );
+}
 $id = $_SESSION['id'];
 
 $consulta = pg_query("SELECT id, usuario.nombre, apellido, correo, pais.nombre, DATE(fecha_registro) FROM usuario INNER JOIN pais ON usuario.pais = pais.cod_pais WHERE id=".$id);
