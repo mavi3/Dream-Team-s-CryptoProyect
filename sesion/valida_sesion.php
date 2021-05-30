@@ -6,7 +6,7 @@ session_start();
 if(isset($_SESSION["user"])) {
 
     $id = $_SESSION["id"];
-    $result = pg_query($dbconn,'SELECT admin FROM usuario WHERE id='.$id);
+    $result = pg_query_params($dbconn,'SELECT admin FROM usuario WHERE id=$1',array($id));
     $row = pg_fetch_array($result);
 
    echo '<ul class="navbar-nav">
@@ -47,6 +47,7 @@ else{
             </li>
         </ul>';
 }
+pg_close($dbconn)
 
 /* Este archivo debe usarse para comprobar si existe una sesión válida 
    Considerar qué pasa cuando la sesión es válida/inválida para cada página:

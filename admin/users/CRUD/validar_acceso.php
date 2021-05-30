@@ -5,10 +5,11 @@ if(!isset($_SESSION['user'])){
 }
 
 $idt = $_SESSION["id"];
-$result = pg_query($dbconn,'SELECT admin FROM usuario WHERE id='.$idt);
+$result = pg_query_params	($dbconn,'SELECT admin FROM usuario WHERE id=$1',array($idt));
 $row = pg_fetch_array($result);
 
 if($row["admin"] == 'f'){
     header("Location: ../../index.html" );
 }
+
 ?>
