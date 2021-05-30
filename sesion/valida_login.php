@@ -1,3 +1,40 @@
 <?php 
 /* Este archivo debe manejar la lógica de iniciar sesión */
+include '../db_config.php';
+session_start();
+$sesion = 0;
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+if(!empty($_POST["email"]) && !empty($_POST["pwd"])){
+ $email = $_POST["email"];
+ $password = $_POST["pwd"];
+ $result = pg_query('SELECT nombre, contraseña, correo, admin FROM usuario WHERE correo=\''.$email.'\'');
+ if($row = pg_fetch_array($result)){
+  if($row["contraseña"] == $password){
+   $_SESSION["user"] = $row['nombre'];
+   echo 'Has sido logueado correctamente '.$_SESSION['user'].' <p>';
+   $sesion= 1;
+  }else{
+   echo 'Password incorrecto';
+  }
+ }else{
+  echo 'Email no existente en la base de datos';
+ }
+ pg_free_result($result);
+}else{
+ echo 'Debe especificar un email y password';
+ 
+}
+if($sesion == 1) {
+  header( "refresh:5;url=../index.html" );
+  echo 'Serás redireccionado en 5 segundos. Si no quieres esperar, haz click <a href="../index.html">aquí</a>.';
+}else{
+    header("refresh:3;url=log-in.html");
+}
+
+pg_close();
+
+}
+
 ?>

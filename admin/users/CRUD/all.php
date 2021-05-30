@@ -22,10 +22,7 @@ if(!$consulta){
 
         echo '</tr>';
     }
-}    <div class="form-group">
-<label for="name">Name:</label>
-<input type="text" class="form-control" id="name" placeholder="Enter name" name="name" requuired>
-</div>
-
+}
+hola
 pg_close($dbconn)
 ?>
