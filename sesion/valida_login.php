@@ -30,10 +30,10 @@ if(!empty($_POST["email"]) && !empty($_POST["pwd"])){
  
 }
 if($sesion == 1) {
-  header( "refresh:5;url=../index.html" );
-  echo 'Serás redireccionado en 5 segundos. Si no quieres esperar, haz click <a href="../index.html">aquí</a>.';
+  header( "Location: ../index.html" );
+  //echo 'Serás redireccionado en 3 segundos. Si no quieres esperar, haz click <a href="../index.html">aquí</a>.';
 }else{
-    header("refresh:3;url=log-in.html");
+    header("Location: log-in.html");
 }
 
 pg_close();

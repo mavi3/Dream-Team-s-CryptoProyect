@@ -31,8 +31,8 @@ if($password == $password2){
 
         $envio = pg_query_params($dbconn, $consulta, array($nombre,$apellido,$correo,$password,$pais));
         if($envio){
-            header("refresh:5;url=log-in.html");
-            echo 'Tu cuenta ha sido creada, serás redireccionado en 5 segundos para que puedas logearte. Si no quieres esperar, haz click <a href="../index.html">aquí</a>.';
+            header("Location: log-in.html");
+            //echo 'Tu cuenta ha sido creada, serás redireccionado en 5 segundos para que puedas logearte. Si no quieres esperar, haz click <a href="../index.html">aquí</a>.';
         }else{
             header("refresh:5;url=sign-up.html");
             echo "BAD ENDING Inténtalo nuevamente.";
