@@ -1,6 +1,6 @@
 <?php
 /* Este archivo debe manejar la lógica de obtener los datos de todos los usuarios */
-$consulta = pg_query($dbconn, "SELECT id, nombre, apellido, correo, admin FROM usuario");
+$consulta = pg_query($dbconn, "SELECT id, nombre, apellido, correo, admin FROM usuario ORDER BY id");
 /* Comprobar la consulta */
 if(!$consulta){
     echo "Error al realizar la consulta.\n";
