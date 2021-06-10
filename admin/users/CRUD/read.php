@@ -13,8 +13,13 @@ echo "<p>Apellido: ". $fila[2]." </p>";
 echo "<p>Correo: ". $fila[3]." </p>";
 echo "<p>País: ". $fila[4]." </p>";
 echo "<p>Fecha de Ingreso: ". $fila[5]." </p>";
+if($fila[0] == $_SESSION["id"]){
+  echo '<div class="d-flex justify-content-end">
+         <a href="/admin/users/all.html" class="btn btn-secondary">Volver</a>
+         <a href="/admin/users/update.html?id='. $fila[0].'" class="btn btn-warning mx-3">Editar <i class="fas fa-edit"></i></a>';  
 
-echo '<div class="d-flex justify-content-end">
+}else{
+  echo '<div class="d-flex justify-content-end">
          <a href="/admin/users/all.html" class="btn btn-secondary">Volver</a>
          <a href="/admin/users/update.html?id='. $fila[0].'" class="btn btn-warning mx-3">Editar <i class="fas fa-edit"></i></a>
          
@@ -52,6 +57,10 @@ echo '<div class="d-flex justify-content-end">
                           </div>
          
      </div>';
+}
+
+
+
 
 pg_close($dbconn);
 ?>
