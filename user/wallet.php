@@ -1,4 +1,7 @@
 <?php
+if($_SESSION['admin'] == 't'){
+    header("Location: ../../index.html" );
+}
 include $_SERVER['DOCUMENT_ROOT'].'/db_config.php';
 /* Este archivo debe manejar la lógica para obtener la información de la billetera */
 $id = $_SESSION['id'];

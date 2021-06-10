@@ -15,6 +15,7 @@ if(!empty($_POST["email"]) && !empty($_POST["pwd"])){
       //Llenar de datos el array $_SESSION para su uso posterior.
    $_SESSION["user"] = $row["nombre"];
    $_SESSION["id"] = $row['id'];
+   $_SESSION["admin"] = $row['admin'];
 
    echo 'Has sido logueado correctamente '.$_SESSION['user'].' <p>';
    $sesion= 1;
