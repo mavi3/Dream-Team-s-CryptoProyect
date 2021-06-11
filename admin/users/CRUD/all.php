@@ -21,7 +21,9 @@ if(!$consulta){
 
         echo '</tr>';
         }else{
+          echo $fila[0];
             echo '<tr>';
+        
         echo '<td>'. $fila[0]. '</td>';
         echo '<td>'. $fila[1]. '</td>';
         echo '<td>'. $fila[2]. '</td>';
@@ -33,13 +35,13 @@ if(!$consulta){
 
                     
                     
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal'.$fila[0].'">
                             Borrar <i
                             class="fas fa-trash-alt"></i>
                           </button>
                           
                           <!-- The Modal -->
-                          <div class="modal fade" id="myModal">
+                          <div class="modal fade" id="myModal'.$fila[0].'">
                             <div class="modal-dialog">
                               <div class="modal-content">
                           

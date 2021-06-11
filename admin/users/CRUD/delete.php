@@ -14,10 +14,11 @@ if($row["admin"]== 't'){
         FROM usuario
         WHERE id = $1";
         $enviar = pg_query_params($dbconn,$consulta ,array($id));
-        pg_close($dbconn);
+        
         header('Location: ../all.html');
     }}
 else{
     header('Location: ../all.html');
 }
+pg_close($dbconn);
 ?>
