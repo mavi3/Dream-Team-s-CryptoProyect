@@ -21,7 +21,6 @@ if(!$consulta){
 
         echo '</tr>';
         }else{
-          echo $fila[0];
             echo '<tr>';
         
         echo '<td>'. $fila[0]. '</td>';
